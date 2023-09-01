@@ -1,5 +1,5 @@
 import nock from 'nock';
-import { loadPage } from '../js/page-loader.js';
+import { loadPage } from '../index.js';
 import fs from 'fs/promises';
 import * as os from 'os';
 import path from 'path';
