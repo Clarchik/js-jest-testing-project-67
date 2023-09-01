@@ -1,12 +1,12 @@
-import { Axios } from "axios";
-import { existsSync, mkdirSync, writeFileSync } from 'fs';
+import * as Axios from "axios";
+import * as fs from 'fs';
 
 export async function loadPage(dir, url) {
   const fileName = url.split('//')[1].replace(/[.\/]/g, '-');
 
-  const { data } = await new Axios({ method: 'get' }).get(url);
-  if (!existsSync(dir)) {
-    mkdirSync(dir, { recursive: true });
+  const { data } = await new Axios.Axios({ method: 'get' }).get(url);
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
   }
-  writeFileSync(`${dir}/${fileName}.html`, data);
+  fs.writeFileSync(`${dir}/${fileName}.html`, data);
 }

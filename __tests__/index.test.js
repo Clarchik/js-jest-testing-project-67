@@ -1,5 +1,5 @@
 import nock from 'nock';
-import { loadPage } from '../index.js';
+import * as main from '../index.js';
 import fs from 'fs/promises';
 import * as os from 'os';
 import path from 'path';
@@ -18,7 +18,7 @@ beforeEach(async () => {
 test('test', async () => {
   nock('https://ru.hexlet.io').get('/course').reply(200, html);
 
-  await loadPage(tempDir, url);
+  await main.loadPage(tempDir, url);
 
   const file = await fs.readFile(`${tempDir}/${fileName}`, 'utf-8');
 
